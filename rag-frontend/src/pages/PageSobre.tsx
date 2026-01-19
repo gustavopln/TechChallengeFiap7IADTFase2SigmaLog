@@ -151,7 +151,7 @@ export function PageSobre() {
           <RepoCard
             onClick={() =>
               window.open(
-                "https://github.com/gustavopln/tech-challenge-fiap-otimizacao-rotas/tree/main",
+                "https://github.com/allanribeiro91/fiap7IADTFase2SigmaLog",
                 "_blank"
               )
             }

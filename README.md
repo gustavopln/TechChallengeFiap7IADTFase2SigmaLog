@@ -4,6 +4,10 @@ O objetivo do projeto é demonstrar como técnicas de **inteligência artificial
 
 O sistema simula um cenário real de distribuição de medicamentos e insumos hospitalares, considerando múltiplos veículos, destinos, restrições operacionais e níveis de prioridade.
 
+## ATENÇÃO!
+- Para Assistente funcionar é necessário adicionar chave API da OpenAI
+- Incluir chave em: rag-backend/.env
+- Veja o env.example em rag-backend/env.example
 ________________________________________________________________________________
 
 ## Objetivo do Projeto
