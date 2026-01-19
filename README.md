@@ -22,6 +22,7 @@ ________________________________________________________________________________
 ## Visão Geral da Arquitetura
 O projeto foi estruturado de forma **modular**, separando responsabilidades e facilitando a compreensão do fluxo completo da solução:
 
+```text
 .
 ├── README.md
 ├── optimization/
@@ -67,7 +68,7 @@ O projeto foi estruturado de forma **modular**, separando responsabilidades e fa
         ├── api.js (chat)
         ├── services/ (kpis, itinerários, mapa etc.)
         └── components/pages/layout/utils/styles…
-
+```
 
 ________________________________________________________________________________
 
