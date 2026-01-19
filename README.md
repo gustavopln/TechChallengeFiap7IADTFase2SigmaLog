@@ -22,10 +22,52 @@ ________________________________________________________________________________
 ## Visão Geral da Arquitetura
 O projeto foi estruturado de forma **modular**, separando responsabilidades e facilitando a compreensão do fluxo completo da solução:
 
-FASE2/
+.
+├── README.md
 ├── optimization/
+│   ├── main.py
+│   ├── requirements.txt
+│   ├── notebooks/
+│   │   └── optimization_track.ipynb
+│   ├── data/
+│   │   ├── entregas.csv
+│   │   ├── hospitais_df.csv
+│   │   ├── veiculos.csv
+│   │   ├── rotas_iniciais.csv
+│   │   ├── rotas_otimizadas.csv
+│   │   ├── resumo_resultados.csv
+│   │   └── resultados/
+│   │       ├── rotas_otimizadas.csv
+│   │       ├── mapa_rotas_vrp.html
+│   │       ├── mapa_hospitais_brasilia.html
+│   │       └── historico_ga_vrp_semeado.csv (+ schemas)
+│   └── src/
+│       ├── core/ (GA/VRP/TSP)
+│       ├── models/ (modelos e defaults)
+│       ├── utils/ (geração de CSV/relatórios)
+│       └── visualization/ (mapas/plot)
 ├── rag-backend/
+│   ├── app/
+│   │   ├── main.py (FastAPI + /chat)
+│   │   ├── settings.py (.env)
+│   │   ├── data.py (DataStore, carrega CSVs)
+│   │   ├── rag.py (montagem do “contexto” do RAG)
+│   │   ├── schemas.py (pydantic)
+│   │   ├── routers/ (endpoints REST)
+│   │   └── static/
+│   │       └── mapa_rotas_vrp.html
+│   ├── data/ (CSV usados pela API)
+│   ├── env.example
+│   └── requirements.txt
 └── rag-frontend/
+    ├── package.json / vite.config.js / tsconfig.json
+    ├── public/ (ícones)
+    └── src/
+        ├── App.tsx / main.tsx
+        ├── api.js (chat)
+        ├── services/ (kpis, itinerários, mapa etc.)
+        └── components/pages/layout/utils/styles…
+
 
 ________________________________________________________________________________
 
@@ -44,6 +86,13 @@ o	prioridade das entregas;
 - Exportação dos resultados em formatos estruturados (**CSV** e **HTML**), que alimentam os demais módulos do sistema.
 Este módulo representa a etapa de planejamento logístico propriamente dita.
 
+### Tecnologias Utilizadas
+
+* Python 3.11
+* Algoritmo Genético (VRP semeado)
+* Pandas, NumPy
+* Jupyter Notebook
+* Folium (mapas)
 ________________________________________________________________________________
 
 ## 2. rag-backend – APIs e **RAG**
@@ -64,6 +113,12 @@ o	entregas ordenadas;
 - Implementar um mecanismo de **RAG**, permitindo que perguntas em linguagem natural sejam respondidas com base exclusiva nos dados da operação.
 O backend atua como a camada de inteligência e explicação, traduzindo dados técnicos em informações compreensíveis para gestores e equipes operacionais.
 
+### Tecnologias Utilizadas
+
+* FastAPI
+* Pydantic
+* OpenAI API
+* RAG baseado em contexto estruturado (CSV)
 ________________________________________________________________________________
 
 ## 3. rag-frontend – Interface e Visualização
@@ -81,6 +136,12 @@ Principais funcionalidades
 - Chat integrado, permitindo consultas em linguagem natural ao sistema (via **RAG**).
 O frontend foi projetado para facilitar tanto a análise executiva quanto o acompanhamento operacional do planejamento logístico.
 
+### Tecnologias Utilizadas
+
+* React + Vite
+* TypeScript
+* CSS modular
+* Fetch API
 ________________________________________
 
 ## Fluxo Geral do Sistema
@@ -98,13 +159,9 @@ A execução do Sigma Log é dividida em três etapas, correspondentes aos módu
 ### 1. Executando o módulo `optimization`
 O módulo **optimization** é responsável por calcular as rotas otimizadas utilizando o algoritmo genético.
 
-#### Passo 0 --> Ajustar o notebook, na primeira célula:
-PROJECT_ROOT = Path("C:\\Users\\aribe\\Documents\\FIAP\\Fase2\\optimization")
-APP_BACKEND = "C:\\Users\\aribe\\Documents\\FIAP\\Fase2\\rag-backend"
-
 #### Passos
 cd optimization
-virtualenv .venv
+python -m venv .venv
     Windows --> .venv\Scripts\activate
     Linux/macOS --> source .venv/bin/activate
 pip install -r requirements.txt
@@ -118,12 +175,12 @@ O rag-backend disponibiliza as APIs e o mecanismo de RAG que consome os dados ge
 
 #### Passos
 cd rag-backend
-virtualenv .venv
+python -m venv .venv
     Windows --> .venv\Scripts\activate
     Linux/macOS --> source .venv/bin/activate
 pip install -r requirements.txt
 uvicorn app.main:app --reload --port 8000
-    O backend estará disponível em: http://localhost:8000
+    O backend estará disponível em: http://localhost:8000/docs
 
 ### 3. Executando o módulo rag-frontend
 O rag-frontend é responsável pela interface de visualização e interação com o sistema.
