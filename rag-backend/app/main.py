@@ -1,6 +1,7 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
+from fastapi.responses import RedirectResponse
 from openai import OpenAI
 from app.settings import settings
 from app.data import store
@@ -39,6 +40,10 @@ app.include_router(hospitais.router)
 app.include_router(rotas.router)
 app.include_router(resumo.router)
 app.include_router(itinerarios.router)
+
+@app.get("/", include_in_schema=False)
+def root():
+    return RedirectResponse(url="/docs")
     
 @app.get("/health")
 def health():
