@@ -1,24 +1,38 @@
-# =========================
-# Outputs gerados (não versionar)
-# =========================
-optimization/data/resultados/
-optimization/data/rotas_otimizadas.csv
-optimization/data/resumo_resultados.csv
+# =====================
+# Python
+# =====================
+.venv/
+__pycache__/
+*.pyc
 
-rag-backend/data/*.csv
-rag-backend/app/static/*.html
-
+# =====================
 # Jupyter
+# =====================
 .ipynb_checkpoints/
 
-# Python
-__pycache__/
-.pytest_cache/
-.mypy_cache/
-.coverage
-htmlcov/
+# =====================
+# Environment files
+# =====================
+.env
+.env.*
+rag-backend/.env
 
-# Node
-node_modules/
-dist/
-.vite/
+# =====================
+# Node / Frontend (local)
+# =====================
+.npmrc
+.nvmrc
+
+# =====================
+# Generated artifacts
+# =====================
+data/resultados/
+*.html
+*.log
+data/*_resultados.csv
+data/*_otimizadas.csv
+
+# =====================
+# Backend runtime data
+# =====================
+rag-backend/data/
