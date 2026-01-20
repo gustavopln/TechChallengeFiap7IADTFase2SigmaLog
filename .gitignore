@@ -36,3 +36,15 @@ data/*_otimizadas.csv
 # Backend runtime data
 # =====================
 rag-backend/data/
+
+# =====================
+# Optimization outputs
+# =====================
+optimization/data/resultados/
+optimization/data/resumo_resultados.csv
+optimization/data/rotas_otimizadas.csv
+
+# =====================
+# Qualquer zip local
+# =====================
+*.zip
