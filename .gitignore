@@ -1,40 +1,24 @@
 # =========================
-# Python
+# Outputs gerados (não versionar)
 # =========================
-__pycache__/
-*.py[cod]
-*.pyo
-*.pyd
+optimization/data/resultados/
+optimization/data/rotas_otimizadas.csv
+optimization/data/resumo_resultados.csv
 
-# Ambientes virtuais (qualquer nível)
-.venv/
-venv/
+rag-backend/data/*.csv
+rag-backend/app/static/*.html
 
-# Variáveis de ambiente
-.env
-.env.*
-
-# =========================
-# Node / React / Vite
-# =========================
-node_modules/
-dist/
-build/
-
-# =========================
 # Jupyter
-# =========================
 .ipynb_checkpoints/
 
-# =========================
-# Logs
-# =========================
-*.log
+# Python
+__pycache__/
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
 
-# =========================
-# OS / Editor
-# =========================
-.DS_Store
-Thumbs.db
-.vscode/
-.idea/
+# Node
+node_modules/
+dist/
+.vite/
